@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ccc"
+        android:background="#eee"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trabalhando com ScrollView"
+            android:text="@string/titulo"
             android:padding="10dp"
             android:textAlignment="center"
             android:textColor="#00f"
@@ -35,8 +35,60 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@android:drawable/ic_dialog_email"
+            android:src="@drawable/icone_foto"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:text="@string/nome"
+            style="@style/labels"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintNome"
+            android:inputType="textCapWords"
+            style="@style/campos"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/telefone"
+            style="@style/labels"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintTelefone"
+            android:inputType="phone"
+            style="@style/campos"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado:"
+            style="@style/labels"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/estados"
+            android:id="@+id/spEstado"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cidade:"
+            style="@style/labels"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spCidade"/>
+
+
+
 
     </LinearLayout>
 </ScrollView>

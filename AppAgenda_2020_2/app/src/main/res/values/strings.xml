@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">AppAgenda_2020_2</string>
+
+    <string name="titulo">Working with ScrollView</string>
+
+    <string name="nome">Name:</string>
+    <string name="telefone">Phone:</string>
+
+    <string name="hintNome">Insert here your Name:</string>
+    <string name="hintTelefone">Insert here your Phone:</string>
+
+    <string-array name="estados">
+        <item>Select the State...</item>
+        <item>PR</item>
+        <item>SC</item>
+        <item>RS</item>
+    </string-array>
+
+    <string name="selecionarEstado">You must select a state</string>
+
 </resources>

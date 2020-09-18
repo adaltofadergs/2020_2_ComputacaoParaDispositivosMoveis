@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AppAgenda_2020_2</string>
+
+    <string name="titulo">Trabalhando com ScrollView</string>
+
+    <string name="nome">Nome:</string>
+    <string name="telefone">Telefone:</string>
+
+    <string name="hintNome">Digite aqui seu nome:</string>
+    <string name="hintTelefone">Digite aqui seu telefone:</string>
+
+
+    <string-array name="estados">
+        <item>Selecione o Estado...</item>
+        <item>PR</item>
+        <item>SC</item>
+        <item>RS</item>
+    </string-array>
+
+    <string name="selecionarEstado">Você deve selecionar um estado</string>
+
+</resources>
