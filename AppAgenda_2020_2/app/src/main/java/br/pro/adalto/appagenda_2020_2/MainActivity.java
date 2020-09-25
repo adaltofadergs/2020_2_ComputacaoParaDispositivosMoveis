@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 spCidade.setEnabled(true);
                 break;
             default:
-                cidades = new String[]{ getResources().getString(R.string.selecionarEstado) };
+                cidades = new String[]{ getResources().getString(R.string.selecionarEstado)  };
                 spCidade.setEnabled(false);
         }
 
