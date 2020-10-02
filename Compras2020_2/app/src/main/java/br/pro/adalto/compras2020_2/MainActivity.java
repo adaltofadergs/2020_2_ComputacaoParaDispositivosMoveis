@@ -1,5 +1,6 @@
 package br.pro.adalto.compras2020_2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,8 +13,14 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ListView lvProdutos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +29,35 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        lvProdutos = findViewById(R.id.lvProdutos);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+           //     Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+           //             .setAction("Action", null).show();
+
+                Intent intent = new Intent(MainActivity.this , FormularioActivity.class);
+                intent.putExtra("acao" , "inserir");
+                startActivity( intent );
             }
         });
+
+        carregarProdutos();
+    }
+
+    private void carregarProdutos(){
+        List<Produto> lista = ProdutoDAO.getProdutos( this );
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, lista);
+        lvProdutos.setAdapter( adapter );
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        carregarProdutos();
     }
 
     @Override

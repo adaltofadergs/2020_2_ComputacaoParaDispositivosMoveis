@@ -15,7 +15,7 @@ public class Banco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL( "CREATE TABLE produtos ( " +
+        sqLiteDatabase.execSQL( "CREATE TABLE IF NOT EXISTS produtos ( " +
                                 " id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT , " +
                                 " nome TEXT NOT NULL , " +
                                 " preco DOUBLE  ) " );
