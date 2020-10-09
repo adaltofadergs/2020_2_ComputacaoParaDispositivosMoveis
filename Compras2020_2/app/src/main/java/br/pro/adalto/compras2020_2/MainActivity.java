@@ -1,11 +1,13 @@
 package br.pro.adalto.compras2020_2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,6 +15,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -45,6 +48,45 @@ public class MainActivity extends AppCompatActivity {
         });
 
         carregarProdutos();
+
+        lvProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Produto prodSelecionado = (Produto) adapterView.getItemAtPosition( i );
+
+                Intent intent = new Intent(MainActivity.this , FormularioActivity.class);
+                intent.putExtra("acao" , "editar");
+                intent.putExtra("idProduto" ,  prodSelecionado.getId() );
+                startActivity( intent );
+
+            }
+        });
+
+
+        lvProdutos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Produto prodSelecionado = (Produto) adapterView.getItemAtPosition( i );
+                excluir(prodSelecionado);
+                return true;
+            }
+        });
+
+    }
+
+    private void excluir(final Produto prod){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle("Excluir Produto");
+        alerta.setMessage("Confirma a exclusão do produto " + prod.getNome() + "?");
+        alerta.setNeutralButton("Cancelar", null);
+        alerta.setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                ProdutoDAO.excluir(MainActivity.this, prod.getId());
+                carregarProdutos();
+            }
+        });
+        alerta.show();
     }
 
     private void carregarProdutos(){

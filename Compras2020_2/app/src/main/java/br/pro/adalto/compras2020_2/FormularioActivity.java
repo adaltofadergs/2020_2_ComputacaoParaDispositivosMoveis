@@ -33,6 +33,13 @@ public class FormularioActivity extends AppCompatActivity {
             }
         });
 
+        if( acao.equals("editar") ){
+            int id = getIntent().getExtras().getInt("idProduto");
+            produto = ProdutoDAO.getProdutoById(FormularioActivity.this, id);
+            etNome.setText( produto.getNome() );
+            etPreco.setText( String.valueOf( produto.getPreco() )  );
+        }
+
     }
 
     private void salvar(){
@@ -61,6 +68,11 @@ public class FormularioActivity extends AppCompatActivity {
 
             if( acao.equals( "inserir" ) ){
                 ProdutoDAO.inserir( this , produto );
+                produto = null;
+                etNome.setText("");
+                etPreco.setText("");
+            }else{
+                ProdutoDAO.editar(this, produto);
                 finish();
             }
 
