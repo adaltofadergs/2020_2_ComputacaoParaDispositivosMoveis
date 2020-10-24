@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "AppComprasWeb_2020_2"
